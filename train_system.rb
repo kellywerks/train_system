@@ -111,11 +111,14 @@ def view_stations
   end
 end
 
-# def view_stops_by_line
-#   puts "Choose a line to view all its stops:"
-#   Line.all.each_with_index do |line,index|
-#     puts "#{index + 1}. #{line.name}"
-#   end
-# end
+def view_stops_by_line
+  puts "Choose a line to view all its stops:"
+  Line.all.each_with_index do |line,index|
+    puts "#{index + 1}. #{line.name}"
+  end
+  user_choice = gets.chomp.to_i
+  view_line_id = Line.all[user_choice-1].id
+  Stop.all_by_line(view_line_id)
+end
 
 main_menu
